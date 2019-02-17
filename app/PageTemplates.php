@@ -20,29 +20,13 @@ trait PageTemplates
     | - page slug
     */
 
-    private function services()
-    {
-        
-        $this->crud->addField([   // CustomHTML
-                        'name' => 'content_separator',
-                        'type' => 'custom_html',
-                        'value' => '<br><h2>'.trans('backpack::pagemanager.content').'</h2><hr>',
-                    ]);
-        $this->crud->addField([
-                        'name' => 'content',
-                        'label' => trans('backpack::pagemanager.content'),
-                        'type' => 'wysiwyg',
-                        'placeholder' => trans('backpack::pagemanager.content_placeholder'),
-                    ]);
-    }
-
-    private function about_us()
+    private function normal()
     {
         $this->crud->addField([
                         'name' => 'content',
-                        'label' => trans('backpack::pagemanager.content'),
+                        'label' => 'Content',
                         'type' => 'wysiwyg',
-                        'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+                        'placeholder' => 'Your content here',
                     ]);
     }
 }
