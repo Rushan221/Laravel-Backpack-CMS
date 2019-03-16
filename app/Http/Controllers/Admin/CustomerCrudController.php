@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\CustomerRequest as StoreRequest;
-use App\Http\Requests\CustomerRequest as UpdateRequest;
+use App\Http\Requests\CustomerStoreRequest as StoreRequest;
+use App\Http\Requests\CustomerUpdateRequest as UpdateRequest;
 use Backpack\CRUD\CrudPanel;
 
 /**
@@ -39,6 +39,25 @@ class CustomerCrudController extends CrudController
         // add asterisk for fields that are required in CustomerRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+        
+        $this->crud->addFields([
+            [
+                'name' => 'name', 
+                'type' => 'text', 
+                'label' => 'Name'
+            ],
+            [
+                'name' => 'email',
+                'label' => 'Email Address',
+                'type' => 'email'
+            ],
+            [
+                'name' => 'phone', 
+                'type' => 'text', 
+                'label' => 'Contact number'
+            ],
+        ]);
+
     }
 
     public function store(StoreRequest $request)
